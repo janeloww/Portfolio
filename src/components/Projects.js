@@ -4,6 +4,8 @@ import projImg3 from "../assets/img/project-img3.png";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import "animate.css";
+import TrackVisibility from "react-on-screen";
 /* TabContainer allows for more complex layouts
     TabContent and TabPane components along with Nav allows you to piece together your own tabs with additional markup
     as needed.
@@ -40,10 +42,25 @@ export const Projects = () => {
       <Container>
         <Row>
           <Col>
-            <h2>Projects</h2>
-            <p>Loren Ipsum here is a lot abot my projects</p>
+            <TrackVisibility>
+              {/* from the anime module */}
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__slideInUp" : ""
+                  }
+                >
+                  <h2>Projects</h2>
+                  <p>Below is a collection of projects I’ve built. Each one helped me learn something new and sharpen my skills.</p>
+                </div>
+              )}
+            </TrackVisibility>
             <Tab.Container id="projects-tab" defaultActiveKey="first">
-              <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items0center" id="pills-tab">
+              <Nav
+                variant="pills"
+                className="nav-pills mb-5 justify-content-center align-items0center"
+                id="pills-tab"
+              >
                 <Nav.Item>
                   <Nav.Link eventKey="first">Tab 1</Nav.Link>
                 </Nav.Item>

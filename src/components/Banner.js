@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImg from "../assets/img/header-img.svg";
+import "animate.css";
+import TrackVisibility from "react-on-screen";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -50,16 +52,43 @@ export const Banner = () => {
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
-            <span className="tagline">Welcome to my Portfolio</span>
+            <TrackVisibility>
+              {/* from the anime module */}
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__fadeIn" : ""
+                  }
+                >
+                  <span className="tagline">Welcome to my Portfolio</span>
+                  <h1>
+                    {`Hi! I'm Jane Low, a `}
+                    <br />
+                    <span className="wrap" style={{ marginLeft: "0px" }}>
+                      {text}
+                    </span>
+                  </h1>
+                  <p>
+                    I’m a third-year Computer Science student at the University
+                    of Toronto Scarborough, specializing in Software
+                    Engineering. Outside of the classroom, I’m a committed
+                    athlete on U of T’s tri-campus volleyball team, where I’ve
+                    developed strong skills in teamwork, focus, and resilience.
+                    I'm currently exploring opportunities to apply my technical
+                    skills in real-world settings, with a particular interest in
+                    full-stack development and building intuitive, impactful
+                    applications. Whether I’m writing clean, maintainable code
+                    or collaborating to bring an idea to life, I’m always eager
+                    to learn, improve, and take on new challenges!
+                  </p>
+                  <button onClick={() => console.log("connect")}>
+                    Let's Connect! <ArrowRightCircle size={25} />
+                  </button>
+                </div>
+              )}
+            </TrackVisibility>
           </Col>
-          <h1>
-            {`Hi I'm Jane Low `}
-            <span className="wrap">{text}</span>
-          </h1>
-          <p>tell me about yourself will be put in here.</p>
-          <button onClick={() => console.log("connect")}>
-            Let's Connect! <ArrowRightCircle size={25} />
-          </button>
+
           <Col xs={12} md={6} xl={5}>
             <img src={headerImg} alt="Header Img" />
           </Col>
