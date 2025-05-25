@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImg from "../assets/img/header-img.svg";
+import headShot from "../assets/img/fake-headshot.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { HashLink } from "react-router-hash-link";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const toRotate = ["Web Developer", "Web Designer", "UI/UX Designer"]; // the words to show up
+  const toRotate = ["Software Developer", "CS Student"]; // the words to show up
   const [text, setText] = useState("");
-  const [delta, setDelta] = useState(300 - Math.random() * 100); // determines how fast one letter shows after the next
+  const [delta, setDelta] = useState(150); // determines how fast one letter shows after the next
   const period = 2000; //indicates how much time passes between each word
 
   const tick = () => {
@@ -22,19 +24,32 @@ export const Banner = () => {
       : fullText.substring(0, text.length + 1);
     setText(updatedText);
 
-    if (isDeleting) {
-      setDelta((prevDelta) => prevDelta / 2);
-    }
     if (!isDeleting && updatedText === fullText) {
-      // if we've written out the whole word, we want to start deleting
+      // pause before deleting
       setIsDeleting(true);
-      setDelta(period); //set back to its normal pace
+      setDelta(period); // pause at full word
     } else if (isDeleting && updatedText === "") {
-      // done deleting, we want to print the next word now
+      // done deleting, go to next word
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setDelta(500);
+      setDelta(100); // reset to normal typing speed
+    } else {
+      // normal typing or deleting speed
+      setDelta(100);
     }
+    // if (isDeleting) {
+    //   setDelta((prevDelta) => prevDelta / 2);
+    // }
+    // if (!isDeleting && updatedText === fullText) {
+    //   // if we've written out the whole word, we want to start deleting
+    //   setIsDeleting(true);
+    //   setDelta(period); //set back to its normal pace
+    // } else if (isDeleting && updatedText === "") {
+    //   // done deleting, we want to print the next word now
+    //   setIsDeleting(false);
+    //   setLoopNum(loopNum + 1);
+    //   setDelta(100);
+    // }
   };
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -81,16 +96,29 @@ export const Banner = () => {
                     or collaborating to bring an idea to life, I’m always eager
                     to learn, improve, and take on new challenges!
                   </p>
-                  <button onClick={() => console.log("connect")}>
-                    Let's Connect! <ArrowRightCircle size={25} />
-                  </button>
+                  <div>
+                    <HashLink
+                      to="#connect"
+                      smooth
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <button>
+                        Let's Connect! <ArrowRightCircle size={25} />
+                      </button>
+                    </HashLink>
+                  </div>
+
+                  {/* <button onClick={() => console.log("connect")}></button> */}
                 </div>
               )}
             </TrackVisibility>
           </Col>
 
           <Col xs={12} md={6} xl={5}>
-            <img src={headerImg} alt="Header Img" />
+            <div className="image-wrapper">
+              <img className="astronaut-img" src={headerImg} alt="Header Img" />
+              <img className="profile-pic" src={headShot} alt="" />
+            </div>
           </Col>
         </Row>
       </Container>

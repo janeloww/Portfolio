@@ -6,6 +6,9 @@ import { ProjectCard } from "./ProjectCard";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import Jinder from "../assets/img/jinder.png";
+import CMS from "../assets/img/CMS-app.png";
+import portfolio from "../assets/img/portfolio.png";
 /* TabContainer allows for more complex layouts
     TabContent and TabPane components along with Nav allows you to piece together your own tabs with additional markup
     as needed.
@@ -17,28 +20,23 @@ export const Projects = () => {
   // holds the objects that we want to display
   const projects = [
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
+      title: "Jinder",
+      description: "Job Search Platform",
+      imgUrl: Jinder,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      title: "University Faculty Management Application",
+      description: "Android Application",
+      imgUrl: CMS,
     },
     {
-      title: "Business Startup",
+      title: "Portfolio Website",
       description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      imgUrl: portfolio,
     },
   ];
   return (
-    <section className="project" id="project">
+    <section className="project" id="projects">
       <Container>
         <Row>
           <Col>
@@ -51,7 +49,10 @@ export const Projects = () => {
                   }
                 >
                   <h2>Projects</h2>
-                  <p>Below is a collection of projects I’ve built. Each one helped me learn something new and sharpen my skills.</p>
+                  <p>
+                    Below is a collection of projects I’ve built. Each one
+                    helped me learn something new and sharpen my skills.
+                  </p>
                 </div>
               )}
             </TrackVisibility>

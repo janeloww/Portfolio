@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 export const Contact = () => {
   const formInitialDetails = {
-    firstName: " ",
+    firstName: "",
     lastName: "",
     email: "",
     phone: "",
@@ -28,7 +28,7 @@ export const Contact = () => {
     let response = await fetch("http://localhost:5000/contact", {
       method: "POST",
       headers: {
-        "Content-Type": "Application/json;charset=utf-8",
+        "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(formDetails),
     });
@@ -36,10 +36,12 @@ export const Contact = () => {
     let result = response.json();
     setFormDetails(formInitialDetails);
     if (result.code === 200) {
-      setStatus({ success: true, message: 'Message sent successfully' });
-    } 
-    else {
-      setStatus({ success: false, message: "Something went wrong, please try again later" });
+      setStatus({ success: true, message: "Message sent successfully" });
+    } else {
+      setStatus({
+        success: false,
+        message: "Something went wrong, please try again later",
+      });
     }
   };
   return (
@@ -85,7 +87,7 @@ export const Contact = () => {
                     onChange={(e) => onFormUpdate("phone", e.target.value)}
                   />
                 </Col>
-                <Col>
+                <Col sm={12} className="px-1">
                   <textarea
                     row="6"
                     value={formDetails.message}

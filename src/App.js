@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
@@ -9,14 +10,16 @@ import { Contact } from "./components/Contact";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar></NavBar>
-      <Banner />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar></NavBar>
+        <Banner />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
