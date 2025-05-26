@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import headerImg from "../assets/img/header-img.svg";
-import headShot from "../assets/img/fake-headshot.png";
+import headShot from "../assets/img/fake-headshot-3.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import { HashLink } from "react-router-hash-link";
@@ -115,8 +115,8 @@ export const Banner = () => {
           </Col>
 
           <Col xs={12} md={6} xl={5}>
+            <img className="astronaut-img" src={headerImg} alt="Header Img" />
             <div className="image-wrapper">
-              <img className="astronaut-img" src={headerImg} alt="Header Img" />
               <img className="profile-pic" src={headShot} alt="" />
             </div>
           </Col>
